@@ -1,8 +1,20 @@
-# Factorio 2.1 update
+# Factorio 2.1 notes
 
-- Declare Factorio 2.1 compatibility.
-- Support multiple fuel categories in fuel detection, burner matching and replacement lists.
+Tested with **Factorio 2.1.23**. Current fork version: **1.0.3**.
 
-Validated with Factorio 2.1.23 in an isolated full-mod environment: fresh map creation, copied-save upgrade and 1,800 simulation ticks. Combined feature checks covered production by all five advanced assembler tiers, science chest refill, nine loader variants, underground-belt build events and disabled robot charging. These checks do not establish full multiplayer or optional-overhaul compatibility.
+## Changes
 
-Additional checks passed: a migrated save reloaded for 1,800 ticks after removing the Black Market bridge; Even Distribution replaced real furnace fuel; Max Rate Calculator processed an assembler selection; Black Market constructed its main and item-selection windows. The furnace legacy option generated the converted smelting recipes with category lists. Interaction checks used temporary private test hooks, excluded from the distributed ZIPs.
+- Updated fuel-category handling, recipe lookup, product probabilities and rendering target offsets.
+- Fixed in-game changelog parsing; original entries are preserved in docs/UPSTREAM-CHANGELOG.txt.
+
+## Tests
+
+- Distribution, balancing, half stacks and fuel replacement with a connected client.
+- Disconnect cancelled a pending drag without losing its 120 items.
+- Saved inventories survived restart/rejoin and a clean-archive continuation.
+
+Fixtures entered the production event queue directly. Actual keyboard and mouse gestures were not automated.
+
+Tests used private copies of saves and local host/client sessions. Raw player data and test hooks are not shipped.
+
+The 1.0.3 patch changes changelog text and version metadata only; the feature tests above apply to the unchanged gameplay code.
