@@ -17,7 +17,9 @@ function recipe:productcount(item) -- get count of a specific item in recipe pro
     if self:is("valid") then
 		for __,product in pairs(self.products) do
             if product.name == item then 
-                return product.amount or product.amount_min or product.amount_max or product.probability or 1 
+                local amount = product.amount or ((product.amount_min + product.amount_max) / 2)
+                local shared = product.shared_probability
+                return (amount + (product.extra_count_fraction or 0)) * product.independent_probability * (shared.max - shared.min)
             end
 		end
     end

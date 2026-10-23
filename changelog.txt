@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2026-10-23
+  Bugfixes:
+    - Use prototypes.recipe when discovering robot unlocks.
+    - Use independent/shared recipe probabilities for product counts.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2026-10-23
   Compatibility:
