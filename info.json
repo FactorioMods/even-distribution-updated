@@ -1,11 +1,14 @@
 {
-  "name": "even-distribution",
-  "version": "2.1.0",
+  "name": "even-distribution-updated",
+  "version": "1.0.0",
   "factorio_version": "2.1",
-  "title": "Even Distribution",
-  "author": "321freddy",
+  "title": "Even Distribution: Updated",
+  "author": "321freddy (original); johnmart19 / FactorioMods (2.1 fork)",
   "contact": "https://forums.factorio.com/viewtopic.php?f=92&t=46278",
-  "homepage": "",
-  "description": "Modifies CTRL + Click Drag to evenly distribute the items over multiple buildings. \r\n\r\nAdds Inventory Cleanup hotkey (SHIFT+C) to evenly distribute uneeded items from your inventory into nearby machines.",
-  "dependencies": ["base >= 2.1.7"]
+  "homepage": "https://github.com/FactorioMods/even-distribution-updated",
+  "description": "Factorio 2.1 update of Even Distribution. Original author: 321freddy. Modifies CTRL + Click Drag to evenly distribute the items over multiple buildings. \r\n\r\nAdds Inventory Cleanup hotkey (SHIFT+C) to evenly distribute uneeded items from your inventory into nearby machines.",
+  "dependencies": [
+    "base >= 2.1.23",
+    "! even-distribution"
+  ]
 }

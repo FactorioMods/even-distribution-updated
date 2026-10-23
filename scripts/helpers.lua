@@ -60,7 +60,7 @@ local conditions = {
 
     -- Custom type conditions
     ["crafting machine"] = util.isCraftingMachine,
-    ["fuel"] = function(obj) return obj.object_name == "LuaItemStack" and obj.prototype.fuel_category ~= nil or obj.fuel_category ~= nil end,
+    ["fuel"] = function(obj) return obj.object_name == "LuaItemStack" and obj.prototype.fuel_categories ~= nil or (obj.object_name ~= "LuaItemStack" and obj.fuel_categories ~= nil) end,
     ["ammo"] = function(obj) return obj.type == "ammo" end,
 }
 
@@ -507,6 +507,32 @@ function this:groupBy(key)
     end
     
     return _(result)
+end
+
+function this.supportsFuel(burner, prototype)
+    for _, category in pairs(prototype.fuel_categories or {}) do
+        if burner.fuel_categories[category] then return true end
+    end
+    return false
+end
+
+function this.inferiorFuels(prototype)
+    local result, seen = {}, {}
+    for _, category in pairs(prototype.fuel_categories or {}) do
+        for _, fuel in pairs(storage.fuelList[category] or {}) do
+            if not seen[fuel.name] and fuel.fuel_value <= prototype.fuel_value then
+                seen[fuel.name] = true
+                result[#result + 1] = fuel
+            end
+        end
+    end
+    table.sort(result, function(a, b)
+        if a.fuel_value ~= b.fuel_value then return a.fuel_value < b.fuel_value end
+        if a.name == prototype.name then return false end
+        if b.name == prototype.name then return true end
+        return a.name < b.name
+    end)
+    return result
 end
 
 return this
