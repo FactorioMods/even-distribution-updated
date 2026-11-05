@@ -46,7 +46,7 @@ function util.isCraftingMachine(entity)
 end
 
 function util.enablesRobots(tech)
-	local recipes = game.recipe_prototypes
+	local recipes = prototypes.recipe
 	local items   = prototypes.item
 
 	for __,effect in pairs(tech.prototype.effects) do

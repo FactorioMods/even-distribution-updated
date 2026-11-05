@@ -3,7 +3,7 @@ data:extend{
 		type = "technology",
 		name = "enable-logistics-tab",
 		icon_size = 256,
-		icon = "__even-distribution__/graphics/tech.png",
+		icon = "__even-distribution-updated__/graphics/tech.png",
 		enabled = false,
 		hidden = true,
 		effects =
