@@ -166,7 +166,7 @@ function control:customInsert(player, item, amount, takenFromCar, takenFromTrash
 
             -- no space left --> replace inferior items
             if replaceItems and limit > 0 then
-                for __,inferiorFuel in pairs(storage.fuelList[prototype.fuel_category]) do
+                for __,inferiorFuel in pairs(scripts.helpers.inferiorFuels(prototype)) do
                     if inferiorFuel.name == prototype.name or limit <= 0 then break end
 
                     local returnToPlayer = 0
