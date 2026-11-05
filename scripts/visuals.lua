@@ -47,8 +47,8 @@ function helpers:mark(player, item, count) -- create highlight-box marker with i
             bg = rendering.draw_sprite{
                 sprite = "utility/entity_info_dark_background",
                 render_layer = "selection-box",
-                target = self:toPlain(),
-                target_offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or nil,
+                target = {type = "entity", entity = self:toPlain(),
+                    offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or {0,0}},
                 players = player and {player:toPlain()},
                 surface = self.surface,
                 x_scale = scale,
@@ -57,8 +57,8 @@ function helpers:mark(player, item, count) -- create highlight-box marker with i
             icon = rendering.draw_sprite{
                 sprite = getSprite(item),
                 render_layer = "selection-box",
-                target = self:toPlain(),
-                target_offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or nil,
+                target = {type = "entity", entity = self:toPlain(),
+                    offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or {0,0}},
                 players = player and {player:toPlain()},
                 surface = self.surface,
                 x_scale = scale,
@@ -66,9 +66,8 @@ function helpers:mark(player, item, count) -- create highlight-box marker with i
             },
             text = rendering.draw_text({
                 text = getShortCount(count),
-                target = self:toPlain(),
-                target_offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or nil,
-                --target_offset = { -0.9 * width * 0.5, -0.9 * height * 0.5 },
+                target = {type = "entity", entity = self:toPlain(),
+                    offset = self.type == "spider-vehicle" and {0,-box:boxheight()*3/4} or {0,0}},
                 players = player and {player:toPlain()},
                 surface = self.surface,
                 alignment = "center",
